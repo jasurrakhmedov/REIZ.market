@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
         double TotalPaidAmount = 0;
@@ -17,16 +17,16 @@ public class Main {
         int countText = 0;
         MathContext round = new MathContext(2, RoundingMode.HALF_UP);
 
-        List<SupermarketBase> storageList = ProductStorage.getStorage();
-        List<SupermarketBase> CashList = ProductStorage.CashList();
+        List<SupermarketBase> storageList = SupermarktServiceImpl.getStorage();
+        List<SupermarketBase> CashList = SupermarktServiceImpl.CashList();
 
         while (true) {
 
             System.out.println("-----------------------------");
             System.out.println(countText == 0 ? "Initial product inventory" : "Updated product inventory");
-            ProductStorage.printProductList(storageList);
+            SupermarktServiceImpl.getInstance().printProductList(storageList);
             System.out.println(countText == 0 ? "Initial cash inventory" : "Updated cash inventory");
-            ProductStorage.printCashList(CashList);
+            SupermarktServiceImpl.getInstance().printCashList(CashList);
             System.out.println("----------------------------- \n ");
 
             countText++;
@@ -35,7 +35,7 @@ public class Main {
 
             int command = scanner.nextInt();
             try {
-                ProductStorage.minusProductsQuantity(storageList, command);
+                SupermarktServiceImpl.getInstance().minusProductsQuantity(storageList, command);
             } catch (SoldOutException e) {
                 System.out.println("Product is sold out");
                 break;
@@ -53,7 +53,7 @@ public class Main {
                     BigDecimal PaidAmountTotal = new BigDecimal(value, round);
 
                     try {
-                        ProductStorage.paidCashQuantity(CashList, CashAdded);
+                        SupermarktServiceImpl.getInstance().paidCashQuantity(CashList, CashAdded);
                     } catch (PayNotAcceptedException e) {
                         System.out.println("Non accepted bills or coins");
                         break;
@@ -63,7 +63,7 @@ public class Main {
                         BigDecimal CashChangeTotal = new BigDecimal(CashChange, round);
 
                         try {
-                            ProductStorage.giveChange(CashChange, CashList, TotalPaidAmount, CashChangeTotal, command);
+                            SupermarktServiceImpl.getInstance().giveChange(CashChange, CashList, TotalPaidAmount, CashChangeTotal, command);
                             break;
                         } catch (NotEnoughChangeException e) {
                             System.out.println("Not enough Change to complete the Transaction");
@@ -85,7 +85,7 @@ public class Main {
                     BigDecimal PaidAmountTotal = new BigDecimal(value, round);
 
                     try {
-                        ProductStorage.paidCashQuantity(CashList, CashAdded);
+                        SupermarktServiceImpl.getInstance().paidCashQuantity(CashList, CashAdded);
                     } catch (PayNotAcceptedException e) {
                         System.out.println("Non accepted bills or coins");
                         break;
@@ -95,7 +95,7 @@ public class Main {
                         BigDecimal CashChangeTotal = new BigDecimal(CashChange, round);
 
                         try {
-                            ProductStorage.giveChange(CashChange, CashList, TotalPaidAmount, CashChangeTotal, command);
+                            SupermarktServiceImpl.getInstance().giveChange(CashChange, CashList, TotalPaidAmount, CashChangeTotal, command);
                             break;
                         } catch (NotEnoughChangeException e) {
                             System.out.println("Not enough Change to complete the Transaction");
@@ -115,7 +115,7 @@ public class Main {
                     double value = 1.1 - TotalPaidAmount;
                     BigDecimal PaidAmountTotal = new BigDecimal(value, round);
                     try {
-                        ProductStorage.paidCashQuantity(CashList, CashAdded);
+                        SupermarktServiceImpl.getInstance().paidCashQuantity(CashList, CashAdded);
                     } catch (PayNotAcceptedException e) {
                         System.out.println("Non accepted bills or coins");
                         break;
@@ -126,7 +126,7 @@ public class Main {
                         BigDecimal CashChangeTotal = new BigDecimal(CashChange, round);
 
                         try {
-                            ProductStorage.giveChange(CashChange, CashList, TotalPaidAmount, CashChangeTotal, command);
+                            SupermarktServiceImpl.getInstance().giveChange(CashChange, CashList, TotalPaidAmount, CashChangeTotal, command);
                             break;
                         } catch (NotEnoughChangeException e) {
                             System.out.println("Not enough Change to complete the Transaction");
