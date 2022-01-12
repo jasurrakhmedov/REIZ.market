@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SupermarktServiceImpl implements SupermarketService {
+final class SupermarktServiceImpl implements SupermarketService {
 
     private static SupermarktServiceImpl instance;
 

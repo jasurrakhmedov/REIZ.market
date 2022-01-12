@@ -73,6 +73,7 @@ public class Main {
                     }
                     System.out.println("You paid " + TotalPaidAmount + " in Total." + " You still need to pay " + PaidAmountTotal);
                 }
+                TotalPaidAmount=0;
             } else if (command == 2) {
                 System.out.println("You are trying to buy WINE. You need to pay. You need to pay 2.7");
                 System.out.println("Provide Bill or Coin (accepted values: 0.1, 0.5, 1, 2)");
@@ -104,6 +105,7 @@ public class Main {
                     }
                     System.out.println("You paid " + TotalPaidAmount + " in Total." + " You still need to pay " + PaidAmountTotal);
                 }
+                TotalPaidAmount=0;
             } else if (command == 3) {
                 System.out.println("You are trying to buy BREAD. You need to pay. You need to pay 1.1");
                 System.out.println("Provide Bill or Coin (accepted values: 0.1, 0.5, 1, 2)");
@@ -135,7 +137,7 @@ public class Main {
                     }
                     System.out.println("You paid " + TotalPaidAmount + " in Total." + " You still need to pay " + PaidAmountTotal);
                 }
-
+TotalPaidAmount=0;
             } else if (command == 4) {
                 System.out.println("Exit");
                 break;

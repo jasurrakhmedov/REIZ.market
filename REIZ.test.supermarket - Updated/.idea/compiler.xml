@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="REIZ.test.supermarket - Copy" />
         <module name="REIZ.test.supermarket" />
+        <module name="REIZ.test.supermarket - Updated" />
       </profile>
     </annotationProcessing>
   </component>
